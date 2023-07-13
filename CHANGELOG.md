@@ -1,3 +1,8 @@
+## 1.0.1
+
+- readme update.
+- pubspec.yaml update.
+
 ## 1.0.0
 
 - stable release.
