@@ -25,7 +25,7 @@ The following behaviors are considered unacceptable within the Dio API Client pr
 
 ## Reporting and Enforcement
 
-If you witness or experience any behavior that violates this code of conduct, please report it to the project maintainers at [maintainers-email@example.com](mailto:maintainers-email@example.com). All complaints will be reviewed and investigated promptly and confidentially. The project maintainers are committed to upholding the principles of this code of conduct and will take appropriate actions in response to any verified violations. These actions may include warning the individual, temporary or permanent exclusion from project activities, or any other measures deemed necessary to maintain a positive and inclusive community.
+If you witness or experience any behavior that violates this code of conduct, please report it to the project maintainers at [contact@mohesu.com](mailto:contact@mohesu.com). All complaints will be reviewed and investigated promptly and confidentially. The project maintainers are committed to upholding the principles of this code of conduct and will take appropriate actions in response to any verified violations. These actions may include warning the individual, temporary or permanent exclusion from project activities, or any other measures deemed necessary to maintain a positive and inclusive community.
 
 ## Attribution
 

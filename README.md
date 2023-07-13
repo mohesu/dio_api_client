@@ -103,11 +103,11 @@ class PubPackage extends MainBase<T> {
 
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/mohesu/dio_api_client/issues). Additionally, feel free to submit pull requests with bug fixes or new features.
 
-When contributing to this project, please follow the [code of conduct](link-to-code-of-conduct).
+When contributing to this project, please follow the [code of conduct](https://github.com/mohesu/dio_api_client/blob/main/code_of_conduct.md).
 
 ## License
 
-This package is open source and released under the [MIT License](link-to-license). Feel free to use, modify, and distribute the package according to the terms of the license.
+This package is open source and released under the [MIT License](https://github.com/mohesu/dio_api_client/blob/main/LICENSE). Feel free to use, modify, and distribute the package according to the terms of the license.
 
 ## Contact
 
