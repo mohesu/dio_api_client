@@ -1,3 +1,8 @@
+## 1.0.2
+
+- pubspec.yaml update.
+- dart package linting.
+
 ## 1.0.1
 
 - readme update.
