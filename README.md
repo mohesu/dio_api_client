@@ -1,7 +1,7 @@
 # Dio API Client
 
-[![Pub Version](https://img.shields.io/pub/v/dio_dio_api_client?color=blue)](https://pub.dev/packages/dio_dio_api_client)
-![GitHub License](https://img.shields.io/github/license/rvndsngwn/dio_dio_api_client)
+[![Pub Version](https://img.shields.io/pub/v/dio_api_client?color=blue)](https://pub.dev/packages/dio_dio_api_client)
+![GitHub License](https://img.shields.io/github/license/mohesu/dio_api_client)
 
 ## Description
 
@@ -31,53 +31,77 @@ Then, run the command `flutter pub get` to fetch the package.
 1. Import the package:
 
 ```dart
-import 'package:dio_dio_api_client/dio_dio_api_client.dart';
+import 'package:dio_api_client/dio_api_client.dart';
 ```
 
-2. Create an instance of the `FlutterApiClient` class:
+2. Initialize the API client:
 
 ```dart
-final apiClient = FlutterApiClient();
-```
-
-3. Make API requests:
-
-```dart
-try {
-  final response = await apiClient.get('https://api.example.com/users');
-  // Process the response
-} catch (e) {
-  // Handle the error
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DioApiClient.init();
+  runApp(const MyApp());
 }
 ```
 
-For more detailed usage instructions and examples, please refer to the [API documentation](link-to-api-docs).
+3. Make API class and extend `DioApiClient`:
+
+```dart
+/// * [T] is the type of the response data
+class PubPackage extends DioApiClient<T> {
+  @override
+  Duration get cacheDuration => Duration.zero;
+
+  @override
+  String get endpoint => 'pub.dev/api/';
+
+  @override
+  String get path => 'packages/';
+
+  Future<T?> getPackage(String name) async {
+    final response = await get(
+      dynamicPath: name,
+    );
+    return response.data;
+  }
+}
+
+```
 
 ## Configuration
 
-The Flutter API Client can be customized by providing a configuration object during initialization:
+You can configure the API client by overriding the following methods:
 
 ```dart
-final apiClient = FlutterApiClient(
-  options: ApiClientOptions(
-    baseUrl: 'https://api.example.com',
-    headers: {'Authorization': 'Bearer <your-token>'},
-    timeout: Duration(seconds: 10),
-  ),
-);
+/// * [T] is the type of the response data
+class MainBase<T> extends DioApiClient<T> {
+  @override
+  List<Interceptor> get interceptors => [authInterceptor, logInterceptor];
+
+  @override
+  Duration get cacheDuration => Duration.zero;
+
+  @override
+  String get endpoint => 'pub.dev/api/';
+
+  @override
+  String get path => 'packages/';
+}
+
+
+class PubPackage extends MainBase<T> {
+  Future<T?> getPackage(String name) async {
+    final response = await get(
+      dynamicPath: name,
+    );
+    return response.data;
+  }
+}
 ```
-
-The available configuration options include:
-
-- `baseUrl`: The base URL of your API.
-- `headers`: Additional headers to include in every request.
-- `timeout`: The maximum duration to wait for a response before timing out.
-
-For a full list of available options, please refer to the [API documentation](link-to-api-docs).
 
 ## Contributing
 
-Contributions are welcome! If you encounter any issues or have suggestions for improvements, please [open an issue](link-to-issue-tracker). Additionally, feel free to submit pull requests with bug fixes or new features.
+Contributions are welcome! If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/mohesu/dio_api_client/issues). Additionally, feel free to submit pull requests with bug fixes or new features.
 
 When contributing to this project, please follow the [code of conduct](link-to-code-of-conduct).
 
@@ -89,6 +113,9 @@ This package is open source and released under the [MIT License](link-to-license
 
 If you have any questions or inquiries about the Flutter API Client, please contact [contact@mohesu.com](mailto:contact@mohesu.com).
 
-Happy coding!
+## Authors
 
+[heman4t](https://github.com/heman4t)
 [rvndsngwn](https://github.com/rvndsngwn)
+
+Happy coding! 💙 Flutter
