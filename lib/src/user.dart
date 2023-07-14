@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio_api_client/base_service.dart';
+import 'package:dio_api_client/dio_api_client.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
 

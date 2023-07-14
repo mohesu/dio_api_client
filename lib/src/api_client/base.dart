@@ -65,7 +65,7 @@ abstract class DioApiClient<T>
   Future<Response<R?>> apiRequest<R>(
     String path, {
     String method = "GET",
-    data,
+    Object? data,
     Map<String, dynamic>? queryParameters,
     CancelToken? cancelToken,
     Options? options,
@@ -87,13 +87,15 @@ abstract class DioApiClient<T>
     try {
       try {
         //await _metric.start();
-        response = await client.request<R>(path,
-            data: data,
-            queryParameters: queryParameters,
-            cancelToken: cancelToken,
-            options: options,
-            onSendProgress: onSendProgress,
-            onReceiveProgress: onReceiveProgress);
+        response = await client.request<R>(
+          path,
+          data: data,
+          queryParameters: queryParameters,
+          cancelToken: cancelToken,
+          options: options,
+          onSendProgress: onSendProgress,
+          onReceiveProgress: onReceiveProgress,
+        );
 
         //logger.v(response.statusMessage, null, StackTrace.current);
         /// * [responseInterceptor] will throw an [AppError] if the API response has an error.
@@ -156,60 +158,241 @@ abstract class DioApiClient<T>
   @protected
   Future<Response<T?>> get({
     String dynamicPath = "",
-    data,
+    Object? data,
     Map<String, dynamic>? queryParameters,
     CancelToken? cancelToken,
     Options? options,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    return apiRequest<T>(path + dynamicPath,
-        method: "GET",
-        data: data,
-        queryParameters: queryParameters,
-        cancelToken: cancelToken,
-        options: options,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress);
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "GET",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
   }
 
   @protected
   Future<Response<List<T>?>> getList({
     String dynamicPath = "",
-    data,
+    Object? data,
     Map<String, dynamic>? queryParameters,
     CancelToken? cancelToken,
     Options? options,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    return apiRequest<List<T>>(path + dynamicPath,
-        method: "GET",
-        data: data,
-        queryParameters: queryParameters,
-        cancelToken: cancelToken,
-        options: options,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress);
+    return apiRequest<List<T>>(
+      path + dynamicPath,
+      method: "GET",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
   }
 
   @protected
   Future<Response<T?>> post({
     String dynamicPath = "",
-    data,
+    Object? data,
     Map<String, dynamic>? queryParameters,
     CancelToken? cancelToken,
     Options? options,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    return apiRequest<T>(path + dynamicPath,
-        method: "POST",
-        data: data,
-        queryParameters: queryParameters,
-        cancelToken: cancelToken,
-        options: options,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress);
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "POST",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> put({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "PUT",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> patch({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "PATCH",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> delete({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "DELETE",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> head({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "HEAD",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> connect({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "CONNECT",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> options({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "OPTIONS",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      options: options,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> downloadFile({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    required String savePath,
+    required ProgressCallback onReceiveProgress,
+    Options? options,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "GET",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress,
+      options: options,
+    );
+  }
+
+  @protected
+  Future<Response<T?>> uploadFile({
+    String dynamicPath = "",
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    required String filePath,
+    required String name,
+    required ProgressCallback onSendProgress,
+    Options? options,
+  }) async {
+    return apiRequest<T>(
+      path + dynamicPath,
+      method: "POST",
+      data: data,
+      queryParameters: queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      options: options,
+    );
   }
 }

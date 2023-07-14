@@ -1,7 +1,8 @@
 ## 1.0.2
 
-- pubspec.yaml update.
 - dart package linting.
+- DioApiClient updated.
+- pubspec.yaml update.
 
 ## 1.0.1
 
