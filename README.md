@@ -2,6 +2,11 @@
 
 [![Pub Version](https://img.shields.io/pub/v/dio_api_client?color=blue)](https://pub.dev/packages/dio_dio_api_client)
 ![GitHub License](https://img.shields.io/github/license/mohesu/dio_api_client)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/mohesu/dio_api_client)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/mohesu/dio_api_client)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/mohesu/dio_api_client)
+![GitHub Issues](https://img.shields.io/github/issues/mohesu/dio_api_client)
+![GitHub Stars](https://img.shields.io/github/stars/mohesu/dio_api_client?style=social)
 
 ## Description
 
@@ -39,7 +44,8 @@ import 'package:dio_api_client/dio_api_client.dart';
 ```dart
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DioApiClient.init();
+  final directory = await getTemporaryDirectory();
+  await DioApiClient.init(directory);
   runApp(const MyApp());
 }
 ```

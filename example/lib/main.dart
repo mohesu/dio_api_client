@@ -1,10 +1,12 @@
 import 'package:dio/src/dio_mixin.dart';
 import 'package:dio_api_client/dio_api_client.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DioApiClient.init();
+  final directory = await getTemporaryDirectory();
+  await DioApiClient.init(directory);
   runApp(const MyApp());
 }
 

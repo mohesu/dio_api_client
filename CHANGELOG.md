@@ -1,3 +1,8 @@
+## 1.0.3
+
+- readme update.
+- path_provider dependency removed.
+
 ## 1.0.2
 
 - dart package linting.
