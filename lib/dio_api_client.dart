@@ -1,5 +1,7 @@
 library dio_api_client;
 
+export 'package:dio/dio.dart';
+
 export 'src/api_client/base.dart';
 export 'src/api_client/client.dart';
 export 'src/api_client/interceptor/auth.dart';

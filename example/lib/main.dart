@@ -1,4 +1,3 @@
-import 'package:dio/src/dio_mixin.dart';
 import 'package:dio_api_client/dio_api_client.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
