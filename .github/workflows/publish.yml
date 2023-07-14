@@ -1,20 +1,44 @@
-name: Publish plugin
+name: Publish to pub.dev
+
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+    # must align with the tag-pattern configured on pub.dev, often just replace
+    #  with [0-9]+.[0-9]+.[0-9]+*
+    - 'v[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: 'v'
+    # If you prefer tags like '1.2.3', without the 'v' prefix, then use:
+    # - '[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: ''
+    # If your repository contains multiple packages consider a pattern like:
+    # - 'my_package_name-v[0-9]+.[0-9]+.[0-9]+*'
+
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Publish
-        uses: sakebook/actions-flutter-pub-publisher@v1.4.1
+      - uses: actions/checkout@v1
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1
         with:
-          credential: ${{ secrets.CREDENTIAL_JSON }}
-          flutter_package: false
-          skip_test: true
-          dry_run: true
+          channel: "stable"
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Run tests
+        run: flutter test
+      - name: Setup Pub Credentials
+        shell: bash
+        env:
+          PUB_DEV_PUBLISH_ACCESS_TOKEN: ${{ secrets.PUB_DEV_PUBLISH_ACCESS_TOKEN }}
+          PUB_DEV_PUBLISH_REFRESH_TOKEN: ${{ secrets.PUB_DEV_PUBLISH_REFRESH_TOKEN }}
+          PUB_DEV_PUBLISH_TOKEN_ENDPOINT: ${{ secrets.PUB_DEV_PUBLISH_TOKEN_ENDPOINT }}
+          PUB_DEV_PUBLISH_EXPIRATION: ${{ secrets.PUB_DEV_PUBLISH_EXPIRATION }}
+        run: |
+          sh ./pub_login.sh
+      - name: Check Publish Warnings
+        run: pub publish --dry-run
+      - name: Publish Package
+        run: pub publish -f
