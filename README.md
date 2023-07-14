@@ -121,7 +121,11 @@ If you have any questions or inquiries about the Flutter API Client, please cont
 
 ## Authors
 
-[heman4t](https://github.com/heman4t)
-[rvndsngwn](https://github.com/rvndsngwn)
+- [Hemant Kumar](https://github.com/heman4t)
+- [Arvind Sangwan](https://github.com/rvndsngwn)
+
+## Contributors
+
+[![Contributors](https://contributors-img.web.app/image?repo=mohesu/dio_api_client)](https://github.com/mohesu/dio_api_client/graphs/contributors)
 
 Happy coding! 💙 Flutter
