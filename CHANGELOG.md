@@ -1,3 +1,7 @@
+## 1.0.4
+
+- logger dependency removed.
+
 ## 1.0.3
 
 - readme update.

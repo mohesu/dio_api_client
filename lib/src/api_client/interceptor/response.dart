@@ -1,9 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-
-import '../../logger.dart';
 
 /// * [ApiResponseInterceptor] is a mixin class that handles API response.
 /// * [T] is a generic type of the API response.
@@ -75,8 +74,13 @@ mixin ApiResponseInterceptor<T> {
     }
 
     if (response.requestOptions.extra["useFromMap"] ?? true == false) {
-      logger.v(
-          'extra["useFromMap"] is false. Sending Response.data as ${data.runtimeType}');
+      log(
+        'extra["useFromMap"] is false. Sending Response.data as ${data.runtimeType}',
+        name: 'Error while mapping List',
+        error:
+            'extra["useFromMap"] is false. Sending Response.data as ${data.runtimeType}',
+        stackTrace: StackTrace.current,
+      );
       return handler.next(response..data = data);
     }
     try {
@@ -90,7 +94,12 @@ mixin ApiResponseInterceptor<T> {
         return handler.next(response..data = data.map<T>(fromMap!).toList());
       }
     } catch (e) {
-      logger.e('Error while mapping List', e, StackTrace.current);
+      log(
+        e.toString(),
+        name: 'Error while mapping List',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       return handler.reject(
           DioException(requestOptions: response.requestOptions, error: e),
           true);

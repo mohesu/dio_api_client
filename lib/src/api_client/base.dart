@@ -1,9 +1,10 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
 
-import '../logger.dart';
 import '../status/error.dart';
 import 'client.dart';
 import 'interceptor/auth.dart';
@@ -99,48 +100,87 @@ abstract class DioApiClient<T>
         //logger.v(response.statusMessage, null, StackTrace.current);
         /// * [responseInterceptor] will throw an [AppError] if the API response has an error.
       } on DioException catch (e) {
-        logger.e(e.message, e);
+        log(e.toString(), name: 'DioException', error: e);
         AppError appError = AppError();
         try {
           appError = AppError.fromJson(e.response?.data);
         } on FormatException catch (e) {
-          logger.e(e.runtimeType, StackTrace.current);
-          logger.e("$e", e);
+          log(
+            e.toString(),
+            name: 'FormatException',
+            error: e,
+            stackTrace: StackTrace.current,
+          );
         }
         throw appError..stackTrace = e.stackTrace;
       }
 
       /// * SocketException will throw an [AppError] if there is no internet connection.
     } on SocketException catch (e) {
-      logger.e(e.address, e);
+      log(
+        e.toString(),
+        name: 'SocketException',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       throw AppError(message: 'No Internet connection 😑');
 
       /// * HttpException will throw an [AppError] if the API endpoint is not found.
     } on HttpException catch (e) {
-      logger.e(e.uri, e);
+      log(
+        e.toString(),
+        name: 'HttpException',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       throw AppError(message: "Couldn't find the destination 😱");
 
       /// * FormatException will throw an [AppError] if the API response has a bad format.
     } on FormatException catch (e) {
-      logger.e(e.source, e);
+      log(
+        e.toString(),
+        name: 'FormatException',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       throw AppError(message: "Bad response format 👎");
 
       /// * NetworkImageLoadException will throw an [AppError] if the image URL is not found.
     } on NetworkImageLoadException catch (e) {
-      logger.e(e.uri, e);
+      log(
+        e.toString(),
+        name: 'NetworkImageLoadException',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       throw AppError(message: "Unable to Load Image");
 
       /// * WebSocketException will throw an [AppError] if the socket connection is not established.
     } on WebSocketException catch (e) {
-      logger.e(e.message, e);
+      log(
+        e.toString(),
+        name: 'WebSocketException',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       throw AppError(message: "Unable to Connect to Socket");
 
       /// * AppError will throw an [AppError] if the API response has an error.
     } on AppError catch (e) {
-      logger.e("$e", e, e.stackTrace);
+      log(
+        e.toString(),
+        name: 'AppError',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       rethrow;
     } catch (e) {
-      logger.e("$e", e, StackTrace.current);
+      log(
+        e.toString(),
+        name: 'catch',
+        error: e,
+        stackTrace: StackTrace.current,
+      );
       throw AppError();
     }
     return response;

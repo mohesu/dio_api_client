@@ -1,8 +1,8 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import '../../logger.dart';
 import '../../user.dart';
 
 /// * [ApiAuthInterceptor] is a mixin class that handle API authentication.
@@ -41,17 +41,28 @@ mixin ApiAuthInterceptor {
 
   String get token {
     if (user != null && (user?.token?.isNotEmpty ?? false)) {
-      logger.v("token: ${user?.token}");
+      log(
+        "token: ${user?.token}",
+        name: 'No token available',
+      );
       return user!.token!;
     } else {
-      logger.w('No token available', null, StackTrace.current);
+      log(
+        "token: ${user?.token}",
+        name: 'No token available',
+        stackTrace: StackTrace.current,
+      );
       return "";
     }
   }
 
   _onError(DioException error, ErrorInterceptorHandler handler) async {
     if (error.response?.statusCode == 401) {
-      logger.w('Unauthorized', null, StackTrace.current);
+      log(
+        "Unauthorized error: ${error.response?.statusCode}",
+        name: 'Unauthorized error: ${error.response?.statusCode}',
+        stackTrace: StackTrace.current,
+      );
       return handler.reject(error);
     }
     return handler.next(error);

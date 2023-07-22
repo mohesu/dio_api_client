@@ -1,10 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio_api_client/dio_api_client.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
-
-import 'logger.dart';
 
 /// * [User] is a class that contains user data.
 interface class User {
@@ -103,7 +102,7 @@ interface class User {
         _instance = User.fromJson(jsonDecode(utf8.decode(value.content ?? [])));
       }
     }).catchError((e) {
-      logger.e(e);
+      log(e.toString(), name: 'User.instance', error: e);
     });
     return _instance;
   }
