@@ -1,3 +1,7 @@
+## 1.0.5
+
+- dart io removed.
+
 ## 1.0.4
 
 - logger dependency removed.

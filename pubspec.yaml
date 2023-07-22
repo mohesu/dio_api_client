@@ -1,6 +1,6 @@
 name: dio_api_client
 description: API Client for flutter projects based on dio package. It supports caching, logging, authentication, error handling, etc. It is easy to use and extend.
-version: 1.0.4
+version: 1.0.5
 homepage: https://mohesu.com
 repository: https://github.com/mohesu/dio_api_client
 

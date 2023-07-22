@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:universal_io/io.dart';
 
 /// * [ApiResponseInterceptor] is a mixin class that handles API response.
 /// * [T] is a generic type of the API response.
