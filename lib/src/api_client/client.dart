@@ -16,7 +16,7 @@ mixin ApiClient {
   Dio get client {
     if (_client != null) return _client!;
 
-    var dio = Dio()
+    final Dio dio = Dio()
       ..options.baseUrl = ((isSecure) ? "https://" : "http://") + endpoint
       ..options.method = 'GET';
 

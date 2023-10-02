@@ -101,8 +101,20 @@ class MainBase<T> extends DioApiClient<T> {
 
 /// * This is a service class that extends [DioApiClient] and implements (method 1)
 class PubPackage extends MainBase<Map<String, dynamic>?> {
+  @override
+  List<Interceptor> get interceptors => [authInterceptor, logInterceptor];
+
+  @override
+  Duration get cacheDuration => Duration.zero;
+
+  @override
+  String get endpoint => 'pub.dev/api/';
+
+  @override
+  String get path => 'packages/';
+
   Future<Map<String, dynamic>?> getPackage(String name) async {
-    final response = await get(
+    final Response<Map<String, dynamic>?> response = await get(
       dynamicPath: name,
     );
     return response.data;
@@ -126,7 +138,7 @@ class ExampleClass extends DioApiClient<Map<String, dynamic>?> {
       Map<String, dynamic>.from(source as Map<String, dynamic>);
 
   Future<Map<String, dynamic>?> getPackage(String name) async {
-    final response = await get(
+    final Response<Map<String, dynamic>?> response = await get(
       dynamicPath: name,
     );
     return response.data;

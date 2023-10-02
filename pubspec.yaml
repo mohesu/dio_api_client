@@ -1,18 +1,29 @@
 name: dio_api_client
 description: API Client for flutter projects based on dio package. It supports caching, logging, authentication, error handling, etc. It is easy to use and extend.
-version: 1.0.5
+version: 5.3.3
 homepage: https://mohesu.com
 repository: https://github.com/mohesu/dio_api_client
+issue_tracker: https://github.com/mohesu/dio_api_client/issues
+screenshots:
+  - description: 'dio_api_client snapshot'
+    path: dio_api_client.png
+
+topics:
+  - dio
+  - dio-api-client
+  - api-client
+  - http
+  - http-client
 
 environment:
-  sdk: ">=3.0.5 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.1.0 <4.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  dio: ^5.2.1+1
-  dio_cache_interceptor: ^3.4.2
+  dio: ^5.3.3
+  dio_cache_interceptor: ^3.4.4
   dio_cache_interceptor_hive_store: ^3.2.1
   pretty_dio_logger: ^1.3.1
   universal_io: ^2.2.2
@@ -20,6 +31,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.2
+  flutter_lints: ^2.0.3
 
 flutter:
