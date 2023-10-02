@@ -1,16 +1,27 @@
 # Dio API Client
 
 [![Pub Version](https://img.shields.io/pub/v/dio_api_client?color=blue)](https://pub.dev/packages/dio_api_client)
-![GitHub License](https://img.shields.io/github/license/mohesu/dio_api_client)
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/mohesu/dio_api_client)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/mohesu/dio_api_client)
 ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/mohesu/dio_api_client)
 ![GitHub Issues](https://img.shields.io/github/issues/mohesu/dio_api_client)
 ![GitHub Stars](https://img.shields.io/github/stars/mohesu/dio_api_client?style=social)
 
+## Platform Support
+
+| Android | iOS | macOS | Web | Linux | Windows |
+|---------|-----|-------|-----|-------|---------|
+| ✔       | ✔   | ✔     | ✔   | ✔     | ✔       |
+
+
 ## Description
 
 The Flutter API Client is a package designed to simplify the process of making API requests in Flutter projects. It is built on top of the popular `dio` package, providing a streamlined and efficient way to communicate with RESTful APIs.
+
+A powerful HTTP networking package for Dart/Flutter, supports Global configuration, Interceptors, FormData, Request cancellation, File uploading/downloading, Timeout, Custom adapters, Transformers, etc.
+
+<img src="https://raw.githubusercontent.com/mohesu/dio_api_client/master/dio_api_client.png" alt="">
+
 
 ## Features
 
@@ -26,7 +37,7 @@ To use the Flutter API Client in your Flutter project, add the following depende
 
 ```yaml
 dependencies:
-  dio_api_client: ^1.0.0
+  dio_api_client: ^5.3.3
 ```
 
 Then, run the command `flutter pub get` to fetch the package.
